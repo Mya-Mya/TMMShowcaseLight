@@ -11,6 +11,9 @@ jQueryとBootstrapを使用した軽量なWebアプリです。
 * python3系
 * CSVエディタ : Excelでは正常に開けないCSVファイルを扱うため、その他のソフトを使って下さい。例えば[Cassava](https://www.asukaze.net/soft/cassava/)などがおすすめです。
 
+## ロードマップ
+![ロードマップ](https://raw.githubusercontent.com/Mya-Mya/TMMShowcaseLight/main/roadmap/overview.png)
+
 ## 1. 教材メディアの構造を知る。
 教材メディアには階層が存在します。それは以下の通りです。
 
@@ -190,3 +193,6 @@ Media
 1つのMediaは`type`と`payload`の2つの情報から構成されています。
 * `type` : そのメディアの種類。今のところは1本のYouTube動画しか対応していません。
 * `payload` : そのメディアの内容を表す情報です。何の情報をここに書くかは、メディアタイプに依ります。
+
+# 技術情報 : 詳細なロードマップ
+![ロードマップ](https://raw.githubusercontent.com/Mya-Mya/TMMShowcaseLight/main/roadmap/detailed.png)
