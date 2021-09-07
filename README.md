@@ -123,38 +123,38 @@ Media
 ```
 tmmData = 
 {
-	"shelfIds" : {string[]},
-	"lessonIds": {string[]},
-	"chapterIds": {string[]},
-	"mediaIds": {string[]},
-	"shelves" : {
-		<shelfId>: {
+  "shelfIds" : {string[]},
+  "lessonIds": {string[]},
+  "chapterIds": {string[]},
+  "mediaIds": {string[]},
+  "shelves" : {
+    <shelfId>: {
       "id": <shelfId>,
-			"name": <シェルフ名>,
-			"lessonIds": {string[]}
-		}
-	},
-	"lessons": {
-		<lessonId>: {
+      "name": <シェルフ名>,
+      "lessonIds": {string[]}
+    }
+  },
+  "lessons": {
+    <lessonId>: {
       "id": <lessonId>,
-			"name": <レッスン名>,
-			"chapterIds": {string[]}
-		}
-	},
-	"chapters": {
-		<chapterId>: {
+      "name": <レッスン名>,
+      "chapterIds": {string[]}
+    }
+  },
+  "chapters": {
+    <chapterId>: {
       "id": <chapterId>,
-			"name": <チャプター名>,
-			"mediaIds": {string[]}
-		}
-	},
-	"medias": {
-		<mediaId>: {
+      "name": <チャプター名>,
+      "mediaIds": {string[]}
+    }
+  },
+  "medias": {
+    <mediaId>: {
       "id": <mediaId>,
-			"type": <タイプ>,
-			"payload": <ペイロード>
-		}
-	}
+      "type": <タイプ>,
+      "payload": <ペイロード>
+    }
+  }
 }
 ```
 
