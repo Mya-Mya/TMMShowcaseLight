@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--Made with ♥ by Y.M-->
+
+<!--Weeblyスタイル上書き
+    このHTMLコードでは Bootstrap5 を使用している。
+    Weeblyの画面上部には各ページへ遷移できるボタンを持つバーがあったのだが、
+    このバーの表示設定がBootstrap5 によって書き換えられ、とても大きく表示されてしまう。
+    この問題を解決するため、このバー(.birdseye-header)を表示しないようにしている。
+-->
+<style>
+  .birdseye-header {
+    display: none;
+  }
+</style>
+<html lang="ja">
+  <head>
+    <!--使用するライブラリの読み込み-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+  </head>
+  <!--画面設計-->
+  <body class="container-fluid fs-3 mx-2">
+    <!--1段目 シェルフの一覧-->
+    <div class="container-fluid py-3 my-3 rounded border shadow">
+      <div
+        id="shelves_list"
+        class="list-group p-3"
+        style="height: 300px; overflow-y: scroll"
+      ></div>
+    </div>
+    <!--2段目 1つのシェルフが持つレッスン一覧-->
+    <div
+      id="shelf_container"
+      class="container-fluid py-3 my-3 rounded border shadow"
+    >
+      <h3 id="shelf_name" class="p-3 text-center"></h3>
+      <div
+        id="lessons_list"
+        class="list-group p-3"
+        style="height: 300px; overflow-y: scroll"
+      ></div>
+    </div>
+    <!--3段目 1つのレッスンが持つメディア一覧-->
+    <div
+      id="lesson_container"
+      class="container-fluid py-3 my-3 rounded border shadow"
+    >
+      <h3 id="lesson_name" class="p-3 text-center"></h3>
+      <div id="chapters_list" class="list-group p-3"></div>
+    </div>
+    <div class="container-fluid py-3 my-3">
+      <p class="text-center text-secondary fs-6">Made with ♥ by Mya-Mya</p>
+    </div>
+  </body>
+</html>
+<!--自分のスクリプトの起動-->
+<script src="index.js"></script>

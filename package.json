@@ -1,0 +1,27 @@
+{
+  "name": "tmvshowcaselight",
+  "version": "1.0.1",
+  "description": "動画などの教材メディアの展示Webアプリ",
+  "main": "webapp/index.js",
+  "scripts": {
+    "test": "webpack serve --config webpack.config.js",
+    "build": "webpack --mode=production --config webpack.config.js"
+  },
+  "author": "Mya-Mya",
+  "license": "MPL2",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/runtime": "^7.15.4",
+    "html-webpack-plugin": "^5.3.2",
+    "http-proxy-agent": "^4.0.1",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "jsdom": "^17.0.0"
+  }
+}
