@@ -104,15 +104,19 @@ tmnf2は以下2つの項目を持ちます。
 
 ### 属性
 tmmf2dに準拠したCSVファイルは以下のような関係性を持つデータを表しています。
+
 Shelf
 * name : str
 * lessons : List[Lesson]
+
 Lesson
 * name : str
 * chapters : List[Chapter]
+
 Chapter
 * name : str
 * medias : List[Media]
+
 Media
 * type : str
 * payload : str
@@ -160,18 +164,22 @@ tmmData =
 
 ### 属性
 tmmf2nに準拠したJSONファイルは以下のような関係性を持つデータを表しています。主キーには`*`が付けられています。
+
 Shelf
 * id * : str
 * name : str
 * lessonIds : List[str]
+
 Lesson
 * id * : str
 * name : str
 * chapterIds : List[str]
+
 Chapter
 * id * : str
 * name : str
 * mediaIds : List[str]
+
 Media
 * id * : str
 * type : str
