@@ -1,7 +1,7 @@
 # TMMShowcaseLight
 教材メディア(Teachin Material Media)の展示Webアプリです。
 
-CSVファイルを用いて展示する教材メディアのデータを作れば、自動的にHTML及びJS形式のWebアプリを生成することができます。
+CSVファイルを用いて展示する教材メディアのデータを与えれば、それらを展示するHTML及びJS形式のWebアプリを生成することができます。
 
 jQueryとBootstrapを使用した軽量なWebアプリです。
 
@@ -69,6 +69,7 @@ Google Spreadsheet でデータを作り、[ファイル]>[ダウンロード]>[
 npm install
 ```
 このコマンドを実行することにより、`node_modules`というフォルダができますが、名前や内容の変更、移動、削除はしないで下さい。
+
 3. 以下を実行し、Webアプリを作ります。
 ```
 npm run build
@@ -78,8 +79,8 @@ npm run build
 1. `webapp_built`というフォルダを開いて下さい。
 2. `index.html`を開くと、Webアプリが起動します。
 3. このWebアプリを他の人にも使ってもらいたい場合は、以下の2つのファイルを送信します。
-  * `index.html`
-  * `bundle.js`
+    * `index.html`
+    * `bundle.js`
 
 # 技術情報 : 教材メディアのデータ規格 tmmf2 について
 tmmf2は本リポジトリ内で使用する教材メディアのデータの規格です。
@@ -104,15 +105,19 @@ tmnf2は以下2つの項目を持ちます。
 
 ### 属性
 tmmf2dに準拠したCSVファイルは以下のような関係性を持つデータを表しています。
+
 Shelf
 * name : str
 * lessons : List[Lesson]
+
 Lesson
 * name : str
 * chapters : List[Chapter]
+
 Chapter
 * name : str
 * medias : List[Media]
+
 Media
 * type : str
 * payload : str
@@ -160,18 +165,22 @@ tmmData =
 
 ### 属性
 tmmf2nに準拠したJSONファイルは以下のような関係性を持つデータを表しています。主キーには`*`が付けられています。
+
 Shelf
 * id * : str
 * name : str
 * lessonIds : List[str]
+
 Lesson
 * id * : str
 * name : str
 * chapterIds : List[str]
+
 Chapter
 * id * : str
 * name : str
 * mediaIds : List[str]
+
 Media
 * id * : str
 * type : str
