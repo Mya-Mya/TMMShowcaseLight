@@ -83,37 +83,99 @@ npm run build
 
 # 技術情報 : 教材メディアのデータ規格 tmmf2 について
 tmmf2は本リポジトリ内で使用する教材メディアのデータの規格です。
-人間が作成したCSV形式の教材メディアのデータファイルをWebアプリが読めるように、データの構造を取り決めました。
+人間が作成したCSVファイルをWebアプリが読めるJSONファイルに変換できるよう、両者のデータの構造を取り決めました。
 
 tmnf2は以下2つの項目を持ちます。
 * ドメイン形式 / tmmf2d
   * 人間が読んで編集するためのCSV形式です。
   * `TMMData_example_tmvf2d.csv`はこれに準拠しています。
-  * `make_tmmdata_json.py'に読み込ませるCSVファイルは必ずこれに準拠している必要があります。
+  * `make_tmmdata_json.py`に読み込ませるCSVファイルは必ずこれに準拠している必要があります。
   * 入れ子等の構造から成り立っているので、人間が読むのに最適な構造をしています。
   CSV形式の教材メディアのデータファイルはこれに従いながら作成するのがよいでしょう。
 * 正規形式 / tmmf2n
   * Webアプリが読み込むための形式です。
   * `tmmdata_tmmf2n.json`はこれに準拠しています。
   * 正規化されているので、機械が読み込むのに最適な構造をしています。
-## ドメイン形式 / tmmf2d
-### CSVファイルの書き方
-[#初心者向け : Webアプリの作り方](初心者向けWebアプリの作り方)を参考にして下さい。
-### 属性
-Shelf
-* name
-* lessons : Lesson[]
-Lesson
-* name
-* chapters : Chapter[]
-Chapter
-* name
-* medias : Media[]
-Media
-* type
-* payload
 
-##
+## ドメイン形式 / tmmf2d
+### CSVファイルの作り方
+ファイル形式やエンコーディング、書き方については[## 2. 教材メディアのデータファイルを作る。](https://github.com/Mya-Mya/TMMShowcaseLight/blob/main/README.md#2-%E6%95%99%E6%9D%90%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E3%82%8B)を参考にして下さい。
+この通りに作ればtmmf2dに準拠したCSVファイルを作ることができます。
+
+### 属性
+tmmf2dに準拠したCSVファイルは以下のような関係性を持つデータを表しています。
+Shelf
+* name : str
+* lessons : List[Lesson]
+Lesson
+* name : str
+* chapters : List[Chapter]
+Chapter
+* name : str
+* medias : List[Media]
+Media
+* type : str
+* payload : str
+
+## 正規形式 / tmmf2n
+### JSONファイルの構造
+各要素については[`webapp/tmmf2n.js`](https://github.com/Mya-Mya/TMMShowcaseLight/blob/main/webapp/tmmf2n.js)にて型宣言がなされているので、そちらも参照して下さい。
+```
+tmmData = 
+{
+	"shelfIds" : {string[]},
+	"lessonIds": {string[]},
+	"chapterIds": {string[]},
+	"mediaIds": {string[]},
+	"shelves" : {
+		<shelfId>: {
+      "id": <shelfId>,
+			"name": <シェルフ名>,
+			"lessonIds": {string[]}
+		}
+	},
+	"lessons": {
+		<lessonId>: {
+      "id": <lessonId>,
+			"name": <レッスン名>,
+			"chapterIds": {string[]}
+		}
+	},
+	"chapters": {
+		<chapterId>: {
+      "id": <chapterId>,
+			"name": <チャプター名>,
+			"mediaIds": {string[]}
+		}
+	},
+	"medias": {
+		<mediaId>: {
+      "id": <mediaId>,
+			"type": <タイプ>,
+			"payload": <ペイロード>
+		}
+	}
+}
+```
+
+### 属性
+tmmf2nに準拠したJSONファイルは以下のような関係性を持つデータを表しています。主キーには`*`が付けられています。
+Shelf
+* id * : str
+* name : str
+* lessonIds : List[str]
+Lesson
+* id * : str
+* name : str
+* chapterIds : List[str]
+Chapter
+* id * : str
+* name : str
+* mediaIds : List[str]
+Media
+* id * : str
+* type : str
+* payload : str
 
 ## Mediaについて
 1つのMediaは`type`と`payload`の2つの情報から構成されています。
