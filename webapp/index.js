@@ -1,14 +1,14 @@
 //@ts-check
 import jQuery from "jquery";
 const $ = jQuery;
-import tmvData from "../tmvdata_tmvf2n.json";
+import tmmData from "../tmmdata_tmmf2n.json";
 import {
   type_shelfIds,
   type_shelves,
   type_lessons,
   type_chapters,
   type_medias,
-} from "./tmvf2n";
+} from "./tmmf2n";
 
 const idName = {
   shelvesList: "#shelves_list",
@@ -58,9 +58,9 @@ function onDOMReady() {
   $(idName.lessonContainer).hide();
   //存在するシェルフ名の一覧を表示する。
   /**@type type_shelfIds */
-  const shelfIds = tmvData.shelfIds;
+  const shelfIds = tmmData.shelfIds;
   /**@type type_shelves */
-  const shelves = tmvData.shelves;
+  const shelves = tmmData.shelves;
   shelfIds.forEach((shelfId) => {
     const shelf = shelves[shelfId];
     createActionListItem(shelf.id, shelf.name)
@@ -77,9 +77,9 @@ $(onDOMReady);
  */
 function onShelfClicked(shelfId) {
   /**@type type_shelves */
-  const shelves = tmvData.shelves;
+  const shelves = tmmData.shelves;
   /**@type type_lessons */
-  const lessons = tmvData.lessons;
+  const lessons = tmmData.lessons;
   const shelf = shelves[shelfId];
 
   $(idName.shelfContainer).show();
@@ -101,11 +101,11 @@ function onShelfClicked(shelfId) {
  */
 function onLessonClicked(lessonId) {
   /**@type type_lessons */
-  const lessons = tmvData.lessons;
+  const lessons = tmmData.lessons;
   /**@type type_chapters */
-  const chapters = tmvData.chapters;
+  const chapters = tmmData.chapters;
   /**@type type_medias */
-  const medias = tmvData.medias;
+  const medias = tmmData.medias;
   const lesson = lessons[lessonId];
 
   $(idName.lessonContainer).show();

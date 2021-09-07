@@ -7,7 +7,7 @@ from argparse import ArgumentParser, Namespace
 from click import confirm
 
 MY_DIR: Path = Path(__file__).parent
-OUTPUT_JSON_FILE_PATH: Path = MY_DIR/'tmvdata_tmvf2n.json'
+OUTPUT_JSON_FILE_PATH: Path = MY_DIR/'tmmdata_tmmf2n.json'
 
 now_id_num: int = 0
 
@@ -15,7 +15,7 @@ now_id_num: int = 0
 def create_id() -> str:
     global now_id_num
     now_id_num += 1
-    return 'tmvf2nid'+'{:04d}'.format(now_id_num)
+    return 'tmmf2nid'+'{:04d}'.format(now_id_num)
 
 
 class OrderedSet:
@@ -68,8 +68,8 @@ class Shelf:
 
 def parse_args() -> Namespace:
     parser: ArgumentParser = ArgumentParser(
-        prog='tmvf2 utility',
-        description='tmvf2dに準拠したCSVファイルをtmvf2nに準拠したJSONファイルへ変換する。'
+        prog='Make tmmdata JSON',
+        description='tmmf2dに準拠したCSVファイルをtmmf2nに準拠したJSONファイルへ変換する。'
     )
     parser.add_argument('csvfile', type=Path, help='CSVファイルパス')
     args: Namespace = parser.parse_args()
@@ -151,7 +151,7 @@ def obj_to_normalized_obj(obj: List[Shelf]) -> dict:
                         'type': media.type,
                         'payload': media.payload
                     }
-    tmvData: dict = {
+    tmmData: dict = {
         'shelfIds': shelfIds_set.tolist(),
         'lessonIds': lessonIds_set.tolist(),
         'chapterIds': chapterIds_set.tolist(),
@@ -161,7 +161,7 @@ def obj_to_normalized_obj(obj: List[Shelf]) -> dict:
         'chapters': chapters,
         'medias': medias
     }
-    return tmvData
+    return tmmData
 
 
 def normalized_obj_to_json(normalized_obj: dict, json_file_path: Path) -> None:

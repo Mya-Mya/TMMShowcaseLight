@@ -1,5 +1,5 @@
 //@ts-check
-/**tmvf2n の定義
+/**tmmf2n の定義
  * @typedef {string[]} type_shelfIds
  * @typedef {string[]} type_lessonIds
  * @typedef {string[]} type_chapterIds

@@ -1,7 +1,7 @@
 {
-  "name": "tmvshowcaselight",
+  "name": "tmmshowcaselight",
   "version": "1.0.1",
-  "description": "動画などの教材メディアの展示Webアプリ",
+  "description": "教材メディアの展示Webアプリ",
   "main": "webapp/index.js",
   "scripts": {
     "test": "webpack serve --config webpack.config.js",
