@@ -1,7 +1,7 @@
 # TMMShowcaseLight
 教材メディア(Teachin Material Media)の展示Webアプリです。
 
-CSVファイルを用いて展示する教材メディアのデータを作れば、自動的にHTML及びJS形式のWebアプリを生成することができます。
+CSVファイルを用いて展示する教材メディアのデータを与えれば、それらを展示するHTML及びJS形式のWebアプリを生成することができます。
 
 jQueryとBootstrapを使用した軽量なWebアプリです。
 
