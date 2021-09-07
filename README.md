@@ -69,6 +69,7 @@ Google Spreadsheet でデータを作り、[ファイル]>[ダウンロード]>[
 npm install
 ```
 このコマンドを実行することにより、`node_modules`というフォルダができますが、名前や内容の変更、移動、削除はしないで下さい。
+
 3. 以下を実行し、Webアプリを作ります。
 ```
 npm run build
@@ -78,8 +79,8 @@ npm run build
 1. `webapp_built`というフォルダを開いて下さい。
 2. `index.html`を開くと、Webアプリが起動します。
 3. このWebアプリを他の人にも使ってもらいたい場合は、以下の2つのファイルを送信します。
-  * `index.html`
-  * `bundle.js`
+    * `index.html`
+    * `bundle.js`
 
 # 技術情報 : 教材メディアのデータ規格 tmmf2 について
 tmmf2は本リポジトリ内で使用する教材メディアのデータの規格です。
