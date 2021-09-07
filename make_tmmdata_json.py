@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Iterable, List, Set
 from dataclasses import dataclass, field
 from argparse import ArgumentParser, Namespace
-from click import confirm
+from click import confirm, prompt, echo
 
 MY_DIR: Path = Path(__file__).parent
 OUTPUT_JSON_FILE_PATH: Path = MY_DIR/'tmmdata_tmmf2n.json'
@@ -64,16 +64,6 @@ class Shelf:
     id: str = field(default_factory=create_id)
     name: str = ''
     lessons: List[Lesson] = field(default_factory=list)
-
-
-def parse_args() -> Namespace:
-    parser: ArgumentParser = ArgumentParser(
-        prog='Make tmmdata JSON',
-        description='tmmf2dに準拠したCSVファイルをtmmf2nに準拠したJSONファイルへ変換する。'
-    )
-    parser.add_argument('csvfile', type=Path, help='CSVファイルパス')
-    args: Namespace = parser.parse_args()
-    return args
 
 
 def csv_to_obj(csv_file_path: Path, encoding: str = 'utf-8') -> List[Shelf]:
@@ -170,11 +160,19 @@ def normalized_obj_to_json(normalized_obj: dict, json_file_path: Path) -> None:
 
 
 if __name__ == '__main__':
-    args: Namespace = parse_args()
-    csvfile: Path = args.csvfile
+    csvfile: Path = prompt(
+        'Drug the Teaching Material Medias CSV file, then push the Enter key.', type=Path)
+    print(type(csvfile))
+    if not csvfile.exists():
+        echo('This CSV file does not exist.')
+        exit(-1)
     if OUTPUT_JSON_FILE_PATH.exists():
-        if not confirm(f'{str(OUTPUT_JSON_FILE_PATH)}は既に存在します。続けますか？', default=False):
+        if not confirm('The JSON file already exists. Overwrite?', default=False):
             exit(0)
-    obj = csv_to_obj(args.csvfile)
-    normalized_obj = obj_to_normalized_obj(obj)
-    normalized_obj_to_json(normalized_obj, OUTPUT_JSON_FILE_PATH)
+    try:
+        obj = csv_to_obj(csvfile)
+        normalized_obj = obj_to_normalized_obj(obj)
+        normalized_obj_to_json(normalized_obj, OUTPUT_JSON_FILE_PATH)
+    except:
+        echo('An Error Occured.')
+        exit(-1)
