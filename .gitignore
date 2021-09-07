@@ -1,3 +1,4 @@
 # My webapp & Node
 node_modules/
 webapp_built/
+package-lock.json
