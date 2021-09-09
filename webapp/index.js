@@ -12,7 +12,9 @@ import {
 
 const idName = {
   shelvesList: "#shelves_list",
+  shelvesGodown: "#shelves_godown",
   shelfContainer: "#shelf_container",
+  shelfGodown: "#shelf_godown",
   shelfName: "#shelf_name",
   lessonsList: "#lessons_list",
   lessonContainer: "#lesson_container",
@@ -54,7 +56,9 @@ function createYouTubeEmbedding(payload) {
 }
 
 function onDOMReady() {
+  $(idName.shelvesGodown).hide();
   $(idName.shelfContainer).hide();
+  $(idName.shelfGodown).hide();
   $(idName.lessonContainer).hide();
   //存在するシェルフ名の一覧を表示する。
   /**@type type_shelfIds */
@@ -82,6 +86,9 @@ function onShelfClicked(shelfId) {
   const lessons = tmmData.lessons;
   const shelf = shelves[shelfId];
 
+  $(idName.shelfGodown).hide();
+  $(idName.lessonContainer).hide();
+
   $(idName.shelfContainer).show();
   $(idName.shelfName).text(shelf.name);
   $(idName.lessonsList).empty();
@@ -92,6 +99,8 @@ function onShelfClicked(shelfId) {
       .appendTo(idName.lessonsList)
       .on("click", (_) => onLessonClicked(lessonId));
   });
+
+  $(idName.shelvesGodown).show();
 }
 
 /**
@@ -124,4 +133,6 @@ function onLessonClicked(lessonId) {
       }
     });
   });
+
+  $(idName.shelfGodown).show();
 }
