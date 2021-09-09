@@ -9,7 +9,7 @@ jQueryとBootstrapを使用した軽量なWebアプリです。
 ## 用意すべきもの
 * npm
 * python3系
-* CSVエディタ : Excelでは正常に開けないCSVファイルを扱うため、その他のソフトを使って下さい。例えば[Cassava](https://www.asukaze.net/soft/cassava/)などがおすすめです。
+* CSVエディタ : Excelでは正常に開けないCSVファイルを扱うため、その他のソフトを使って下さい。例えばGoogle Spreadsheet や[Cassava](https://www.asukaze.net/soft/cassava/)などがおすすめです。
 
 ## ロードマップ
 ![ロードマップ](https://raw.githubusercontent.com/Mya-Mya/TMMShowcaseLight/main/roadmap/overview.png)
@@ -29,7 +29,7 @@ jQueryとBootstrapを使用した軽量なWebアプリです。
 ## 2. 教材メディアのデータファイルを作る。
 データはカンマ区切り、**UTF-8エンコーディングの**CSVファイルで記述します。
 ExcelはUTF-8エンコーディングのCSVファイルを開けないため、別のソフトで作業する必要があります。
-Google Spreadsheet でデータを作り、[ファイル]>[ダウンロード]>[カンマ区切りの値]の順番でダウンロードするのもよいかと思います。
+Google Spreadsheet でデータを作り[ファイル]>[ダウンロード]>[カンマ区切りの値]の順番でダウンロードすれば、カンマ区切り、UTF-8エンコーディングのCSVファイルを得ることができます。
 
 例えば教材メディアを以下のように配置したいとします。
 - シェルフ1
