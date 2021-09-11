@@ -2,6 +2,7 @@
 import jQuery from "jquery";
 const $ = jQuery;
 import tmmData from "../tmmdata_tmmf2n.json";
+import createMediaView from "./create-media-view";
 import {
   type_shelfIds,
   type_shelves,
@@ -52,7 +53,7 @@ function createYouTubeEmbedding(payload) {
   const code = `<div class="ratio ratio-16x9">
     <iframe src="https://www.youtube.com/embed/${payload}" allowfullscreen></iframe>
     </div>`;
-  return $(code);
+  return $(`<div class="my-1">${code}</div>`);
 }
 
 function onDOMReady() {
@@ -122,15 +123,10 @@ function onLessonClicked(lessonId) {
   $(idName.lessonName).text(lesson.name);
   lesson.chapterIds.forEach((chapterId) => {
     const chapter = chapters[chapterId];
-    const chapterView = createChapterWrapper(chapter.name).appendTo(
-      idName.chaptersList
-    );
     chapter.mediaIds.forEach((mediaId) => {
       const media = medias[mediaId];
-      //メディアタイプが増えたら別のメソッドにまとめ直す
-      if (media.type == "youtube") {
-        createYouTubeEmbedding(media.payload).appendTo(chapterView);
-      }
+      const mediaView = createMediaView(media.type, media.payload);
+      mediaView.appendTo(chapterView);
     });
   });
 
