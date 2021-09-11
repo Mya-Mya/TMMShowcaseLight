@@ -123,6 +123,8 @@ function onLessonClicked(lessonId) {
   $(idName.lessonName).text(lesson.name);
   lesson.chapterIds.forEach((chapterId) => {
     const chapter = chapters[chapterId];
+    const chapterView = createChapterWrapper(chapter.name);
+    chapterView.appendTo($(idName.chaptersList));
     chapter.mediaIds.forEach((mediaId) => {
       const media = medias[mediaId];
       const mediaView = createMediaView(media.type, media.payload);
