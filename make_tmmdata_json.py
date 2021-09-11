@@ -21,7 +21,9 @@ def create_id() -> str:
 def parse_args() -> Namespace:
     parser: ArgumentParser = ArgumentParser(
         'Make TMMData JSON', description='Create tmmf2n JSON from tmmf2d CSV')
-    parser.add_argument('--csv', help='CSV File Path', type=Path)
+    parser.add_argument('--csv', help='CSV file path', type=Path)
+    parser.add_argument(
+        '--force', help='Force to overwrite JSON file', action='store_true')
     args: Namespace = parser.parse_args()
     return args
 
@@ -177,7 +179,7 @@ if __name__ == '__main__':
     if not csvfile.exists():
         echo('This CSV file does not exist.')
         exit(-1)
-    if OUTPUT_JSON_FILE_PATH.exists():
+    if (not args.force) and OUTPUT_JSON_FILE_PATH.exists():
         if not confirm('The JSON file already exists. Overwrite?', default=False):
             exit(0)
     try:
