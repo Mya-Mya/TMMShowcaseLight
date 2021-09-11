@@ -18,6 +18,14 @@ def create_id() -> str:
     return 'tmmf2nid'+'{:04d}'.format(now_id_num)
 
 
+def parse_args() -> Namespace:
+    parser: ArgumentParser = ArgumentParser(
+        'Make TMMData JSON', description='Create tmmf2n JSON from tmmf2d CSV')
+    parser.add_argument('--csv', help='CSV File Path', type=Path)
+    args: Namespace = parser.parse_args()
+    return args
+
+
 class OrderedSet:
     '''
     要素を新規に追加した順に配列へ出力することができる集合。
@@ -160,9 +168,12 @@ def normalized_obj_to_json(normalized_obj: dict, json_file_path: Path) -> None:
 
 
 if __name__ == '__main__':
-    csvfile: Path = prompt(
-        'Drug the Teaching Material Medias CSV file, then push the Enter key.', type=Path)
-    print(type(csvfile))
+    args: Namespace = parse_args()
+    if args.csv:
+        csvfile: Path = args.csv
+    else:
+        csvfile: Path = prompt(
+            'Drug the Teaching Material Medias CSV file, then push the Enter key.', type=Path)
     if not csvfile.exists():
         echo('This CSV file does not exist.')
         exit(-1)
